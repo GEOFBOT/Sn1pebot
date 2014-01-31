@@ -2,8 +2,9 @@
     <div id="content">
       <div id="sidebar">
         <div id="title">Navigation</div>
-        <ul>
+	<ul>
           <li><a href="/sn1pebot/">Home</a></li>
           <li><a href="/sn1pebot/about.php">About</a></li>
+	  <li><a href="/sn1pebot/ideas.php">Ideas</a></li>
         </ul>
       </div>

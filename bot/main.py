@@ -15,22 +15,51 @@
 import pywikibot
 import sn1pebot
 
-# Bootup
-print "==================Sn1pebot=================="
+# Bootup with fancy ASCII art
+print
+print "  /$$$$$$              /$$                       /$$                   /$$    "
+print " /$$__  $$           /$$$$                      | $$                  | $$    "
+print "| $$  \__/ /$$$$$$$ |_  $$    /$$$$$$   /$$$$$$ | $$$$$$$   /$$$$$$  /$$$$$$  "
+print "|  $$$$$$ | $$__  $$  | $$   /$$__  $$ /$$__  $$| $$__  $$ /$$__  $$|_  $$_/  "
+print " \____  $$| $$  \ $$  | $$  | $$  \ $$| $$$$$$$$| $$  \ $$| $$  \ $$  | $$    "
+print " /$$  \ $$| $$  | $$  | $$  | $$  | $$| $$_____/| $$  | $$| $$  | $$  | $$ /$$"
+print "|  $$$$$$/| $$  | $$ /$$$$$$| $$$$$$$/|  $$$$$$$| $$$$$$$/|  $$$$$$/  |  $$$$/"
+print " \______/ |__/  |__/|______/| $$____/  \_______/|_______/  \______/    \___/  "
+print "                            | $$                                              "
+print "                            | $$                                              "
+print "                            |__/                                              "
+print 
+print "=============================================================================="
+print "=============================================================================="
+print
 print "(c) 2014 Geoffrey \"GEOFBOT\" Mon (User:Sn1per)"
 print "Distributed under the MIT License"
 print
 print "Command Center initializing..."
+print
 
 bot = sn1pebot.Bot(pywikibot.getSite(), "Sn1pebot")
+td = sn1pebot.TemplateData(bot)
+
 
 # Action
 print "Scanning task pages to check for work..."
 
 #func = bot.checkFunc(["TemplateData"])
 
-print "Run bot: " + str(bot.isRun())
+run = [bot.isRun(), bot.isRun("TemplateData")]
 
-print "Activating TemplateData function..."
+print
+print "Run bot: " + str(run[0])
+
+if run[0]:
+    print "- TemplateData: " + str(run[1])
+    if run[1]:
+        print
+        td.run()
+else:
+    print "Bot disabled, quitting..."
+
 # Shutdown sequence
+print
 print "Sn1pebot shutting down..."

@@ -14,6 +14,8 @@
 
 import pywikibot
 
+from sn1pebot.templatedata import *
+
 class Bot():
     def __init__(self, site, username):
         self.site = site

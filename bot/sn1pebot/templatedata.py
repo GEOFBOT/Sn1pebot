@@ -15,8 +15,10 @@
 
 import pywikibot
 
-class TemplateData(page):
-    def run():
+class TemplateData():
+    def __init__(self, bot):
+        self.bot = bot        
+    def run(self):
         print "Running TemplateData function"
-    def extract():
-        
+    def extract(self):
+        print "Extracting template parameters..."

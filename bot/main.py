@@ -57,6 +57,7 @@ if run[0]:
     if run[1]:
         print
         td.run()
+        print list(td.extract(pywikibot.Page(pywikibot.getSite(), "Template:ToolserverBot")))
 else:
     print "Bot disabled, quitting..."
 

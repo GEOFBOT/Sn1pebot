@@ -14,11 +14,17 @@
 # Requires Pywikibot framework (core version)
 
 import pywikibot
+import re
 
 class TemplateData():
     def __init__(self, bot):
         self.bot = bot        
     def run(self):
         print "Running TemplateData function"
-    def extract(self):
-        print "Extracting template parameters..."
+    def extract(self, page):
+        print "Extracting template parameters from page", page.title()
+        self.text = page.get()
+        self.start = [x.end() for x in re.finditer("{{{", self.text)]
+        self.end = [x.start() for x in re.finditer("}}}", self.text)]
+        for x in range(len(self.start)):
+            yield str(self.text[self.start[x]:self.end[x]]).split('|', 2)

@@ -23,12 +23,12 @@ class Bot():
 
     def isRun(self, page=""):
         if page != "":
-            if pywikibot.Page(self.site, "User:" + self.username + "/Run/" + page + ".js").get():
+            if pywikibot.Page(self.site, "User:" + self.username + "/Run/" + page + ".js").get() == "true":
                 return True
             else:
                 return False
         else:
-            if pywikibot.Page(self.site, "User:" + self.username + "/Run.js").get():
+            if pywikibot.Page(self.site, "User:" + self.username + "/Run.js").get() == "true":
                 return True
             else:
                 return False

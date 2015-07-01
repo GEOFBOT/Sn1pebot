@@ -38,8 +38,8 @@ print
 print "Command Center initializing..."
 print
 
-bot = sn1pebot.Bot(pywikibot.getSite(), "Sn1pebot")
-td = sn1pebot.TemplateData(bot)
+bot = sn1pebot.Bot(pywikibot.getSite(), "Sn1per")
+dc = sn1pebot.DupeCite(bot)
 
 
 # Action
@@ -47,17 +47,18 @@ print "Scanning task pages to check for work..."
 
 #func = bot.checkFunc(["TemplateData"])
 
-run = [bot.isRun(), bot.isRun("TemplateData")]
+run = [bot.isRun(), bot.isRun("TemplateData"), bot.isRun("DupeCite")]
 
 print
 print "Run bot: " + str(run[0])
 
 if run[0]:
+    print "- DupeCite:     " + str(run[2])
     print "- TemplateData: " + str(run[1])
-    if run[1]:
+    if run[2]:
         print
-        td.run()
-        print list(td.extract(pywikibot.Page(pywikibot.getSite(), "Template:ToolserverBot")))
+        for ref in dc.sortRefs(pywikibot.Page(pywikibot.Site(), 'User:Sn1per/SanFran')):
+            print(str(ref['name']) + ': ' + str(ref['content']))
 else:
     print "Bot disabled, quitting..."
 

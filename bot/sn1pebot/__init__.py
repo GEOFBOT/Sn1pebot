@@ -15,6 +15,7 @@
 import pywikibot
 
 from sn1pebot.templatedata import *
+from sn1pebot.dupecite import *
 
 class Bot():
     def __init__(self, site, username):
@@ -22,13 +23,13 @@ class Bot():
         self.username = username
 
     def isRun(self, page=""):
+        runpage = ""
         if page != "":
-            if pywikibot.Page(self.site, "User:" + self.username + "/Run/" + page + ".js").get() == "true":
-                return True
-            else:
-                return False
+            runpage = pywikibot.Page(self.site, "User:" + self.username + "/Run/" + page + ".js")
         else:
-            if pywikibot.Page(self.site, "User:" + self.username + "/Run.js").get() == "true":
-                return True
-            else:
-                return False
+            runpage = pywikibot.Page(self.site, "User:" + self.username + "/Run.js")
+
+        if runpage.exists() and runpage.get() == "true":
+            return True
+        else:
+            return False
